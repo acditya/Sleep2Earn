@@ -26,7 +26,7 @@ app.get("/getURLTing", (req, res) => {
         "http://localhost:1234"
     )
         //[IN ORDER] Reading Email Data, Reading Activity (Steps) Data, Reading Sleep Data
-        const scopes = ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/fitness.activity.read", "https://www.googleapis.com/auth/fitness.sleep.read"]
+        const scopes = ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/fitness.activity.read", "https://www.googleapis.com/auth/fitness.sleep.read"];
 
         const url = oauth2Client.generateAuthUrl({
             access_type: "offline",
@@ -38,8 +38,8 @@ app.get("/getURLTing", (req, res) => {
         });
 
         //Request Function w/ Error StackTrace Printing
-        request(url, (error, response, body) => {
-            console.log("The Following Error Has Occurred: ", error);
+        request(url, (err, response, body) => {
+            console.log("The Following Error Has Occurred: ", err);
             console.log("statusCode: ", response && response.statusCode);
             res.send({url});
         })
@@ -59,7 +59,7 @@ app.get ("/steps", async (req, res) => {
     )
 
     const tokens = await oauth2Client.getToken(authCode);
-    let stepArray = [];
+    let stepsArray = [];
 
     try{
         const stepsResult = await axios({
@@ -140,8 +140,8 @@ app.get ("/sleep", async (req, res) => {
         //Populate Sleep Array
         sleepArray = result.data.bucket;
 
-    }   catch(Error){
-            console.log(Error)
+    }   catch(e){
+            console.log(e)
     }
 });
 
