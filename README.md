@@ -9,6 +9,7 @@ Project References:
 1. https://github.com/Satwik290896/Web3_SimpleBank
 2. https://github.com/yukizhang17/UI_final_project
 3. https://github.com/Satwik290896/log_sales
+4. https://github.com/solana-labs/solana-web3.js  (SDK)
 
 Files:
 1. https://www.notion.so/Sleep2Earn-662f508bd11f45acb3b2652c9d3e377b?pvs=4
