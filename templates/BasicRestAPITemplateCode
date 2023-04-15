@@ -1,0 +1,166 @@
+/*
+JSON Request Response Templates
+
+OSteps
+
+{
+  "dataStreamName": "MyDataSource",
+  "type": "derived",
+  "application": {
+    "detailsUrl": "http://addAppURLHere.com",
+    "name": "Sleep2Earn",
+    "version": "1"
+  },
+  "dataType": {
+    "field": [
+      {
+        "name": "steps",
+        "format": "integer"
+      }
+    ],
+    "name": "com.google.step_count.delta"
+  },
+  "device": {
+    "manufacturer": "abcXYZ",
+    "model": "abcXYZ",
+    "type": "abcXYZ",
+    "uid": "1000001",
+    "version": "1"
+  }
+}
+
+
+Sample Sleep Request Response
+
+{
+  "dataStreamName": "MyDataSource",
+  "type": "derived",
+  "application": {
+    "detailsUrl": "http://addAppURLHere.com",
+    "name": "Sleep2Earn",
+    "version": "1"
+  },
+  "dataType": {
+    "field": [
+      {
+        "name": "steps",
+        "format": "integer"
+      }
+    ],
+    "name": "com.google.step_count.delta"
+  },
+  "device": {
+    "manufacturer": "abcXYZ",
+    "model": "abcXYZ",
+    "type": "abcXYZ",
+    "uid": "1000001",
+    "version": "1"
+  }
+}
+*/
+
+//Sample Sleep Cycle Data Request Code (in JS)
+val SLEEP_STAGE_NAMES = arrayOf(
+    "Unused",
+    "Awake (during sleep)",
+    "Sleep",
+    "Out-of-bed",
+    "Light sleep",
+    "Deep sleep",
+    "REM sleep"
+)
+
+val request = SessionReadRequest.Builder()
+    .readSessionsFromAllApps()
+    // By default, only activity sessions are included, so it is necessary to explicitly
+    // request sleep sessions. This will cause activity sessions to be *excluded*.
+    .includeSleepSessions()
+    // Sleep segment data is required for details of the fine-granularity sleep, if it is present.
+    .read(DataType.TYPE_SLEEP_SEGMENT)
+    .setTimeInterval(startTime, endTime, TimeUnit.MILLISECONDS)
+    .build()
+
+sessionsClient.readSession(request)
+    .addOnSuccessListener { response ->
+        for (session in response.sessions) {
+            val sessionStart = session.getStartTime(TimeUnit.MILLISECONDS)
+            val sessionEnd = session.getEndTime(TimeUnit.MILLISECONDS)
+            Log.i(TAG, "Sleep between $sessionStart and $sessionEnd")
+
+            // If the sleep session has finer granularity sub-components, extract them:
+            val dataSets = response.getDataSet(session)
+            for (dataSet in dataSets) {
+                for (point in dataSet.dataPoints) {
+                    val sleepStageVal = point.getValue(Field.FIELD_SLEEP_SEGMENT_TYPE).asInt()
+                    val sleepStage = SLEEP_STAGE_NAMES[sleepStageVal]
+                    val segmentStart = point.getStartTime(TimeUnit.MILLISECONDS)
+                    val segmentEnd = point.getEndTime(TimeUnit.MILLISECONDS)
+                    Log.i(TAG, "\t* Type $sleepStage between $segmentStart and $segmentEnd")
+                }
+            }
+        }
+    }
+
+//
+const { data: sleepData } = await axios({
+        method: 'POST',
+        url: 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        data: {
+          aggregateBy: [{ dataTypeName: 'com.google.sleep.segment' }],
+          bucketByTime: { durationMillis: 86400000 }, //Specifies how to parse JSON
+          startTimeMillis: startTimeQuery,
+          endTimeMillis: endTimeQuery,
+        },
+      });
+
+//Simple Sleep Request
+{
+  "aggregateBy": [
+    {
+      "dataTypeName": "com.google.sleep.segment"
+    }
+  ],
+  "endTimeMillis": 1575609060000, #start time in UNIX
+  "startTimeMillis": 1575591360000 #end time in UNIX
+}
+
+//Total Daily Steps Obtainment Request
+{
+  "aggregateBy": [{
+    "dataTypeName": "com.google.step_count.delta",
+    "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
+  }],
+  "bucketByTime": { "durationMillis": 86400000 },
+  "startTimeMillis": 1438705622000,
+  "endTimeMillis": 1439310422000
+}
+
+//
+val startTime = LocalDate.now().atStartOfDay(ZoneId.systemDefault())
+val endTime = LocalDateTime.now().atZone(ZoneId.systemDefault())
+
+val datasource = DataSource.Builder()
+    .setAppPackageName("com.google.android.gms")
+    .setDataType(DataType.TYPE_STEP_COUNT_DELTA)
+    .setType(DataSource.TYPE_DERIVED)
+    .setStreamName("estimated_steps")
+    .build()
+
+val request = DataReadRequest.Builder()
+    .aggregate(datasource)
+    .bucketByTime(1, TimeUnit.DAYS)
+    .setTimeRange(startTime.toEpochSecond(), endTime.toEpochSecond(), TimeUnit.SECONDS)
+    .build()
+
+Fitness.getHistoryClient(this, GoogleSignIn.getAccountForExtension(this, fitnessOptions))
+    .readData(request)
+    .addOnSuccessListener { response ->
+        val totalSteps = response.buckets
+            .flatMap { it.dataSets }
+            .flatMap { it.dataPoints }
+            .sumBy { it.getValue(Field.FIELD_STEPS).asInt() }
+        Log.i(TAG, "Total steps: $totalSteps")
+    }
