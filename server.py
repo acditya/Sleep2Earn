@@ -58,7 +58,7 @@ def log_sales():
         "sales": sales,
         "clients": clients
     }
-    return render_template('log_sales.html', data=data)  
+    return render_template('log_sales.html', data=data)
 
 
 # AJAX FUNCTIONS

@@ -1,0 +1,15 @@
+{
+  "name": "sleep2earn",
+  "version": "1.0.0",
+  "description": "Sleep2Earn LionHack 2023 **Template Code to be Situated Here**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/web3.js": "^1.75.0"
+  }
+}
