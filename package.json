@@ -12,6 +12,7 @@
   "license": "",
   "scripts": {
     "start": "ts-node static/main.ts",
+    "googleAPIs": "ts-node static/GoogleFitAPI.ts",
     "start-with-test-validator": "start-server-and-test 'solana-test-validator --reset --quiet' http://localhost:8899/health start",
     "lint": "eslint --ext .ts src/client/* && prettier --check \"src/client/**/*.ts\"",
     "lint:fix": "eslint --ext .ts src/client/* --fix && prettier --write \"src/client/**/*.ts\"",
@@ -22,12 +23,18 @@
     "clean:program-rust": "cargo clean --manifest-path=./src/program-rust/Cargo.toml && rm -rf ./dist",
     "test:program-rust": "cargo test-bpf --manifest-path=./src/program-rust/Cargo.toml",
     "pretty": "prettier --write '{,src/**/}*.ts'",
-    "test":"echo \"Error: no test specified\" && exit 1 "
+    "test": "echo \"Error: no test specified\" && exit 1 "
   },
   "dependencies": {
     "@solana/web3.js": "^1.33.0",
     "borsh": "^0.7.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "googleapis": "^118.0.0",
     "mz": "^2.7.0",
+    "query-string": "^8.1.0",
+    "request": "^2.88.2",
+    "url-parse": "^1.5.10",
     "yaml": "^2.0.0"
   },
   "devDependencies": {
