@@ -4,26 +4,26 @@ from flask import Response, request, jsonify
 import numpy as np
 app = Flask(__name__)
 
-
+is_signin = 0
 current_id = 4
 sales = [
         {
             "id": 1,
-            "salesperson": "James D. Halpert",
-            "client": "Shake Shack",
-            "reams": 1000
+            "salesperson": "Streak 1",
+            "client": "6 Day",
+            "reams": 20
         },
         {
             "id": 2,
-            "salesperson": "Stanley Hudson",
-            "client": "Toast",
-            "reams": 4000
+            "salesperson": "Streak 2",
+            "client": "3 Day",
+            "reams": 30
         },
         {
             "id": 3,
-            "salesperson": "Michael G. Scott",
-            "client": "Computer Science Department",
-            "reams": 10000
+            "salesperson": "Streak 3",
+            "client": "10 day",
+            "reams": 70
         },
     ]
 
@@ -80,9 +80,29 @@ def STE():
     }
     return render_template('STE.html', data=data)
 
+@app.route('/Wallet')
+def Wallet():
+    global is_signin
+    data = {
+        "sales": sales,
+        "clients": clients,
+        "select": is_signin
+    }
+    return render_template('Wallet.html', data=data)
 
 # AJAX FUNCTIONS
 
+
+@app.route('/send_signin', methods=['GET', 'POST'])
+def send_signin():
+    global is_signin
+    is_signin = 1
+    data = {
+        "sales": sales,
+        "clients": clients
+    }
+    return jsonify(data = data)
+    
 # ajax for people.js
 @app.route('/save_sale', methods=['GET', 'POST'])
 def save_sale():

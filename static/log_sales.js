@@ -108,7 +108,7 @@ $(document).ready(function(){
           });
 
         $("#Submit").click(function(){
-            let person = "Sai Satwik Vaddi"
+            let person = "Streak"
             let client = $("#Enter_Client").val()
             let reams = $("#Reams").val()
             if(($.trim(reams)).length !=0 && isNaN(reams)==1){

@@ -1,5 +1,5 @@
 
-import { connect, KeyPair, keyStores, utils } from "near-api-js";
+/*import { connect, KeyPair, keyStores, utils } from "near-api-js";
 import { join } from "path";
 const homedir = require("os").homedir();
   
@@ -18,7 +18,7 @@ function usefunc1() {
     nodeUrl: "https://rpc.testnet.near.org",
   };
 
-  createAccount(sai2908.testnet, sai2908_v2.testnet, 500000000000);
+  createAccount(sai2908.testnet, Satwik290896_v2.testnet, 500000000000);
 }
 
 async function createAccount(creatorAccountId, newAccountId, amount) {
@@ -40,12 +40,33 @@ async function createAccount(creatorAccountId, newAccountId, amount) {
     attachedDeposit: utils.format.parseNearAmount(amount),
   });
 }
+*/
 
+/*let workout = false
 
+function send_signin(){
+
+    let data_to_save = {"select": 1}         
+    $.ajax({
+        type: "POST",
+        url: "send_signin",                
+        dataType : "json",
+        contentType: "application/json; charset=utf-8",
+        data : JSON.stringify(data_to_save),
+        success: function(result){
+        },
+        error: function(request, status, error){
+            console.log("Error");
+            console.log(request)
+            console.log(status)
+            console.log(error)
+        }
+    });
+}*/
 
 //const nearConnection = await connect(connectionConfig);
 
-$(function(){
+/*$(function(){
     let username = "";
     let email = "";
     let password = "";
@@ -55,7 +76,7 @@ $(function(){
         username = $("#input-reg-1").val()
         email = $("#input-reg-2").val()
         password = $("#input-reg-3").val()
-        usefunc1();
+        send_signin()
         console.log("publickey: " + pubkey);
     })
-})
+})*/

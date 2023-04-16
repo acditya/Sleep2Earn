@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename = 'Wallet.js') }}"></script>
+    
+    <script>
+        let data = {{data|tojson}} 
+        let sales = data["sales"]
+        let clients = data["clients"]
+        let select = data["select"]
+        //console.log(data)
+    </script>
+
+
+
+<div class="title">Profile</div>
+<div class="no-gutters"></div>
+<div class="row">
+    <div class="col-md-2">
+      <div>Username</div>
+    </div>
+    <div class="col-md-5">
+      <!--<input type="text" id="Enter_Client">-->
+      <div class="profile">Satwik290896</div>
+    </div>    
+    <div class="col-md-5">
+    </div>
+</div>
+<div class="no-gutters2"></div>
+<div class="row">
+    <div class="col-md-2">
+      <div>Password</div>
+    </div>
+    <div class="col-md-5">
+      <!--<input type="text" id="Enter_Client">-->
+      <div class="password">******</div>
+    </div>    
+    <div class="col-md-5">
+    </div>
+</div>
+<div class="no-gutters2"></div>
+<div class="row">
+    <div class="col-md-2">
+      <div>Email</div>
+    </div>
+    <div class="col-md-5">
+      <!--<input type="text" id="Enter_Client">-->
+      <div class="email">sv2665@columbia.edu</div>
+    </div>    
+    <div class="col-md-5">
+    </div>
+</div>
+<div class="no-gutters2"></div>
+<div class="row">
+    <div class="col-md-2">
+      <div>Near Account ID</div>
+    </div>
+    <div class="col-md-5">
+      <!--<input type="text" id="Enter_Client">-->
+      <div class="n_accid">sai2908.testnet</div>
+    </div>    
+    <div class="col-md-5">
+    </div>
+</div>
+<div class="no-gutters2"></div>
+<div class="row">
+    <div class="col-md-2">
+      <div>Near Balance</div>
+    </div>
+    <div class="col-md-5">
+      <!--<input type="text" id="Enter_Client">-->
+      <div class="n_bal">199.94732 NEAR</div>
+    </div>    
+    <div class="col-md-5">
+    </div>
+</div>
+<div class="no-gutters2"></div>
+<div class="row">
+    <div class="col-md-2">
+      <div>$</div>
+    </div>
+    <div class="col-md-5">
+      <!--<input type="text" id="Enter_Client">-->
+      <div class="Worth">457.88 USD</div>
+    </div>    
+    <div class="col-md-5">
+    </div>
+</div>
+<div class="Updates"></div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
