@@ -52,6 +52,10 @@ def hello():
 def hello_world():
    return render_template('welcome.html')   
 
+@app.route('/home')
+def home():
+   return render_template('home.html')   
+
 @app.route('/log_sales')
 def log_sales():
     data = {
@@ -59,6 +63,14 @@ def log_sales():
         "clients": clients
     }
     return render_template('log_sales.html', data=data)
+
+@app.route('/STE')
+def STE():
+    data = {
+        "sales": sales,
+        "clients": clients
+    }
+    return render_template('STE.html', data=data)
 
 
 # AJAX FUNCTIONS

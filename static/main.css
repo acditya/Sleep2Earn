@@ -83,3 +83,165 @@
     width: 117%;
     border: 2px solid rgb(25, 25, 26);
 }
+
+.body-reg {
+    background-color: #CED7E4;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+.main-reg {
+      display: flex;
+      justify-content: flex-start; 
+      max-width: 1267px;
+      height: 512px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #CED7E4;
+      align-items: left;
+    }
+
+
+.header {
+    background-color: #FFFFFF;
+    font-family: "Plus Jakarta Sans", medium;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin: 0;
+    }
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu > div:hover {
+    background-color: #6C757D;
+}
+
+.menu a {
+    color: #486284;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.menu a:hover {
+    color: #6C757D;
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+      justify-content: left;
+    align-items: left;
+    padding: 20px;
+    height: 552px;
+    weight: 320px;
+}
+
+.image {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    margin-right: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0;
+    padding: 0;
+}
+
+.h1-reg {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  margin-left: -480px;
+}
+
+.h3-reg {
+    font-family: Sora, extrabold;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 0px;
+}
+.row {
+display: flex;
+flex-wrap: wrap;
+margin: 0 -10px;
+}
+.content-row {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  flex: 1;
+  text-align: left;
+}
+
+
+.content-row h2 {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.form-reg {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.label-reg {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.input-reg-v1 {
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f4f4f4;
+}
+
+.input-reg-v2{
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  background-color: #5732BF;
+  cursor: pointer;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-reg-v2:hover {
+  background-color: #3e8e41;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}

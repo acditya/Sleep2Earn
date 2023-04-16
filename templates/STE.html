@@ -1,205 +1,196 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Sleep to Earn</title>
-	<style>
-		body {
-			background-color: #CED7E4;
-			font-family: "Plus Jakarta Sans", sans-serif;
-			font-size: 16px;
-			margin: 0;
-			padding: 0;
-			align-items: center;
-		}
-		main {
-			  display: flex;
-			  justify-content: flex-start; 
-			  max-width: 1267px;
-			  height: 512px;
-			  margin: 0 auto;
-			  padding: 20px;
-			  background-color: #CED7E4;
-			  align-items: left;
-			}
+{% extends "layout.html" %}
 
+{% block content %}
 
-		.header {
-			background-color: #FFFFFF;
-			font-family: "Plus Jakarta Sans", medium;
-			height: 70px;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			padding: 0 20px;
-			margin: 0;
-			}
+<script type="text/javascript" src="{{ url_for('static', filename = 'STE.js') }}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='reg.css')}}">
 
-		.menu {
-			display: flex;
-			align-items: center;
-			gap: 20px;
-		}
-
-		.menu > div:hover {
-		    background-color: #6C757D;
-		}
-
-		.menu a {
-			color: #486284;
-			text-decoration: none;
-			font-size: 16px;
-			font-weight: bold;
-			transition: color 0.2s;
-		}
-
-		.menu a:hover {
-			color: #6C757D;
-		}
-
-
-		.content {
-			display: flex;
-			flex-direction: column;
-  			justify-content: left;
-			align-items: left;
-			padding: 20px;
-			height: 552px;
-			weight: 320px;
-		}
-
-		.image {
-			position: absolute;
-			top: 0;
-			right: 0;
-		}
-
-		.image img {
-			max-width: 100%;
-			height: auto;
-			margin-right: 0;
-		}
-
-		.container {
-			max-width: 1200px;
-			margin: 0;
-			padding: 0;
-		}
-
-		h1 {
-		  margin: 0;
-		  font-size: 24px;
-		  font-weight: bold;
-		  color: black;
-		  margin-left: -480px;
-		}
-
-		h3 {
-			font-family: Sora, extrabold;
-		}
-
-		.logo {
-		  height: 50px;
-		  margin-right: 0px;
-		}
-		.row {
-		display: flex;
-		flex-wrap: wrap;
-		margin: 0 -10px;
-		}
-		.content-row {
+<style>
+	body {
+		background-color: #CED7E4;
+		font-family: "Plus Jakarta Sans", sans-serif;
+		font-size: 16px;
+		margin: 0;
+		padding: 0;
+		align-items: center;
+	}
+	main {
 		  display: flex;
-		  justify-content: center;
-		  align-items: left;
-		  flex-direction: column;
-		  flex: 1;
-		  text-align: left;
-		}
-
-
-		.content-row h2 {
-		  text-align: left;
-		  margin-left: auto;
-		  margin-right: auto;
-		}
-	
-
-		form {
-		  display: flex;
-		  flex-direction: column;
-		  max-width: 400px;
+		  justify-content: flex-start; 
+		  max-width: 1267px;
+		  height: 512px;
 		  margin: 0 auto;
+		  padding: 20px;
+		  background-color: #CED7E4;
+		  align-items: left;
 		}
 
-		label {
-		  margin-top: 10px;
-		  font-weight: bold;
+
+	.header {
+		background-color: #FFFFFF;
+		font-family: "Plus Jakarta Sans", medium;
+		height: 70px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 20px;
+		margin: 0;
 		}
 
-		input[type="text"],
-		input[type="email"],
-		input[type="password"] {
-		  margin-top: 5px;
-		  padding: 10px;
-		  font-size: 16px;
-		  border-radius: 5px;
-		  border: none;
-		  background-color: #f4f4f4;
-		}
+	.menu {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
 
-		input[type="submit"] {
-		  margin-top: 10px;
-		  padding: 10px 20px;
-		  font-size: 16px;
-		  color: #fff;
-		  border-radius: 5px;
-		  border: none;
-		  background-color: #5732BF;
-		  cursor: pointer;
-		  display: flex;
-  		  justify-content: center;
-  		  align-items: center;
-		}
+	.menu > div:hover {
+		background-color: #6C757D;
+	}
 
-		input[type="submit"]:hover {
-		  background-color: #3e8e41;
-		  display: flex;
-  		  justify-content: center;
-  		  align-items: center;
-		}
-	</style>
+	.menu a {
+		color: #486284;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: bold;
+		transition: color 0.2s;
+	}
 
-</head>
-<body>
-	<header class="header">
-	    <img src="Rectangle 23793.png" class="logo">
-		<h1>Sleep to Earn</h1>
-			<nav class="menu">
-			  <div onclick="navigateTo('home.html')"><a href="#">Home</a></div>
-			  <div onclick="navigateTo('community.html')"><a href="#">Community</a></div>
-			  <div onclick="navigateTo('sleep_tracking.html')"><a href="#">Sleep Tracking</a></div>
-			  <div onclick="navigateTo('set_goals.html')"><a href="#">Set Goals</a></div>
-			  <div onclick="navigateTo('wallet.html')"><a href="#">Wallet</a></div>
-			  <div onclick="navigateTo('register.html')"><a href="#">Register</a></div>
-		</nav>
-	</header>
-	<main>
+	.menu a:hover {
+		color: #6C757D;
+	}
+
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		  justify-content: left;
+		align-items: left;
+		padding: 20px;
+		height: 552px;
+		weight: 320px;
+	}
+
+	.image {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	.image img {
+		max-width: 100%;
+		height: auto;
+		margin-right: 0;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0;
+		padding: 0;
+	}
+
+	h1 {
+	  margin: 0;
+	  font-size: 24px;
+	  font-weight: bold;
+	  color: black;
+	  margin-left: -480px;
+	}
+
+	h3 {
+		font-family: Sora, extrabold;
+	}
+
+	.logo {
+	  height: 50px;
+	  margin-right: 0px;
+	}
+	.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -10px;
+	}
+	.content-row {
+	  display: flex;
+	  justify-content: center;
+	  align-items: left;
+	  flex-direction: column;
+	  flex: 1;
+	  text-align: left;
+	}
+
+
+	.content-row h2 {
+	  text-align: left;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+
+
+	.form-reg {
+	  display: flex;
+	  flex-direction: column;
+	  max-width: 400px;
+	  margin: 0 auto;
+	  position: relative;
+	  margin-left: 50px;
+
+	}
+
+	label {
+	  margin-top: 10px;
+	  font-weight: bold;
+	}
+
+	#input-reg-1,
+	#input-reg-2,
+	#input-reg-3 {
+	  margin-top: 5px;
+	  padding: 10px;
+	  font-size: 16px;
+	  border-radius: 5px;
+	  border: none;
+	  background-color: #f4f4f4;
+	}
+
+	#input-reg-4 {
+	  margin-top: 10px;
+	  padding: 10px 20px;
+	  font-size: 16px;
+	  color: #fff;
+	  border-radius: 5px;
+	  border: none;
+	  background-color: #5732BF;
+	  cursor: pointer;
+	  display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#input-reg-4:hover {
+	  background-color: #3e8e41;
+	  display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+</style>
 		<div class="content">
 			<div class="content">
 			  <div class="content-row">
 			    <!-- Your current content goes here -->
-			    <h3>Create Account</h3>
-			    <form>
+			    
+			    <form class ="form-reg">
+					<h3>Create Account</h3>
 				  <label for="username" style="font-family: Sora, regular;">Username:</label>
-				  <input type="text" id="username" name="username"><br>
+				  <input id="input-reg-1" type="text" id="username" name="username"><br>
 
 				  <label for="email" style="font-family: Sora, regular;">Email:</label>
-				  <input type="email" id="email" name="email"><br>
+				  <input id="input-reg-2" type="email" id="email" name="email"><br>
 
 				  <label for="password" style="font-family: Sora, regular;">Password:</label>
-				  <input type="password" id="password" name="password"><br>
+				  <input id="input-reg-3" type="password" id="password" name="password"><br>
 
-				  <input type="submit" value="Submit">
+				  <input id="input-reg-4" type="submit" value="Submit">
 				</form>
 
 			  
@@ -208,10 +199,8 @@
 			    <!-- Add your new content here -->
 			  </div>
 			  <div class="image">
-				<img src="Group 1000004190.svg">
+				<img src="/static/Group1.svg">
 			</div>
 			</div>
 		</div>
-	</main>
-</body>
-</html>
+		{% endblock %}
