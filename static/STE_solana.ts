@@ -6,8 +6,7 @@ import {
     reportGreetings,
   } from './hello_world';
 
-// greet.ts
-export async function connect_solana() {
+async function connect_solana() {
     console.log("Let's say hello to a Solana account...");
 
     // Establish connection to the cluster
