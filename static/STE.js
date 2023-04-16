@@ -1,20 +1,6 @@
-/*const nearAPI = require("near-api-js");
 
-const { keyStores } = nearAPI;
-const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
-
-const { connect } = nearAPI;
-
-const connectionConfig = {
-  networkId: "testnet",
-  keyStore: myKeyStore, // first create a key store 
-  nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
-};*/
-const { connect, KeyPair, keyStores, utils } = require("near-api-js");
-const path = require("path");
+import { connect, KeyPair, keyStores, utils } from "near-api-js";
+import { join } from "path";
 const homedir = require("os").homedir();
   
 let pubkey = "";
@@ -23,7 +9,7 @@ function usefunc1() {
 
 
   const CREDENTIALS_DIR = ".near-credentials";
-  const credentialsPath = path.join("/", CREDENTIALS_DIR);
+  const credentialsPath = join("/", CREDENTIALS_DIR);
   const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
   const config = {
@@ -32,7 +18,7 @@ function usefunc1() {
     nodeUrl: "https://rpc.testnet.near.org",
   };
 
-  createAccount(process.argv[2], process.argv[3], process.argv[4]);
+  createAccount(sai2908.testnet, sai2908_v2.testnet, 500000000000);
 }
 
 async function createAccount(creatorAccountId, newAccountId, amount) {

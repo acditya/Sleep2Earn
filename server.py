@@ -64,6 +64,14 @@ def log_sales():
     }
     return render_template('log_sales.html', data=data)
 
+@app.route('/community')
+def community():
+    data = {
+        "sales": sales,
+        "clients": clients
+    }
+    return render_template('Community.html', data=data)
+
 @app.route('/STE')
 def STE():
     data = {

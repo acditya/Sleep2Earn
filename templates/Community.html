@@ -1,0 +1,382 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="module" src="{{ url_for('static', filename = 'Community.js') }}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='reg.css')}}">
+
+	<style>
+		body {
+			background-color: #CED7E4;
+			font-family: "Plus Jakarta Sans", sans-serif;
+			font-size: 16px;
+			margin: 0;
+			padding: 0;
+			align-items: center;
+		}
+		main {
+			  display: flex;
+			  justify-content: flex-start; 
+			  max-width: 1267px;
+			  height: 512px;
+			  margin: 100px;
+			  padding: 0px;
+			  background-color: #CED7E4;
+			  align-items: left;
+			}
+
+
+		.header {
+			background-color: #FFFFFF;
+			font-family: "Plus Jakarta Sans", medium;
+			height: 70px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 20px;
+			margin: 0;
+			}
+
+		.menu {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+		}
+
+		.menu a {
+			color: #486284;
+			text-decoration: none;
+			font-size: 16px;
+			font-weight: bold;
+			transition: color 0.2s;
+			transform: scale(1.5);
+		}
+
+		.menu a:hover {
+			color: #000000;
+		}
+
+
+		.content {
+			display: flex;
+			flex-direction: column;
+  			justify-content: left;
+			align-items: left;
+			padding: 100px;
+			height: 552px;
+			weight: 320px;
+		}
+
+		.image {
+			max-width: 150%;
+			height: auto;
+		  	position: relative;
+		  	left: 0;
+		  	top: 0;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+		  margin: 0;
+		  font-size: 24px;
+		  font-weight: bold;
+		  color: black;
+		  margin-left: 80px;
+		  position: absolute;
+		}
+
+		h3 {
+			font-family: Sora, extrabold;
+		}
+
+		.logo {
+		  height: 50px;
+		  margin-right: 0px;
+		}
+		.row {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 -10px;
+		}
+
+		.content-row-1 {
+		  float: left;
+		  display: flex;
+		  align-items: left;
+		  flex-direction: column;
+		  flex: 1;
+		  text-align: left;
+		  max-width: 300px;
+		  margin-left: 300px;
+		  margin-right: 0px;
+		}
+
+
+		.content-row h2 {
+		  text-align: left;
+		  margin-left: auto;
+		  margin-right: auto;
+		  float: right;
+		}
+	
+
+		form {
+		  display: flex;
+		  flex-direction: column;
+		  max-width: 400px;
+		  margin: 0 auto;
+		}
+
+		label {
+		  margin-top: 10px;
+		  font-weight: bold;
+		}
+
+		/* community */
+
+		table {
+		  border-collapse: collapse;
+		  width: 100%;
+		  height: auto;
+		  max-width: 800px;
+		  margin: 0 auto;
+		  border: 0px solid #000000; /* add a border line */
+		  border-radius: 20px; /* add rounded corners */
+		  margin-left: 100px;
+		}
+
+		th, td {
+		  text-align: center;
+		  vertical-align: middle;
+		  padding: 10px;
+		  border: 0px solid #ccc; 
+		  border-radius: 0px; 
+		  font-family: "Plus Jakarta Sans", medium;
+		}
+
+		th {
+		  background-color: #5732BF;
+		  color: white;
+		  border: 1px solid #ccc;  
+
+		}
+
+		th:nth-child(1) {
+		  background-color: #5732BF;
+		  color: white;
+		  border-radius: 10px 0 0 0;
+
+		}
+
+		th:nth-child(6) {
+		  background-color: #5732BF;
+		  color: white;
+		  border-radius: 0 10px 0 0;
+
+		}
+
+
+		tr:nth-child(even) {
+		  background-color: #f2f2f2;
+		  border-radius: 0px;
+		  border: 1x solid #ccc;  
+		}
+
+		tr:nth-child(odd) {
+		  border-radius: 0px;
+		  border: 1px solid #ccc;  
+		}
+
+
+		tr:hover {
+		  background-color: #9D91FF;
+		  border-radius: 0px; 
+
+		}
+		
+		#img1 {
+	    width: 25px;
+	    height: 25px;
+	    object-fit: cover;
+	    vertical-align: middle;
+	  }
+
+	  #img2 {
+	    width: 180%;
+	    height: auto;
+	    margin-left: -100px;
+	    margin-top: -220psx;
+
+	  }
+
+	   #img3 {
+	    width: 160%;
+	    height: auto;
+	    margin-left: -80px;
+
+	  }
+
+
+	</style>
+
+	<!--<header class="header">
+	    <img src="static/RectangleM.png" class="logo">
+		<h1>Sleep to Earn</h1>
+			<nav class="menu">
+			  <div onclick="navigateTo('home.html')"><a href="#">Home</a></div>
+			  <div onclick="navigateTo('community.html')"><a href="#">Community</a></div>
+			  <div onclick="navigateTo('sleep_tracking.html')"><a href="#">Sleep Tracking</a></div>
+			  <div onclick="navigateTo('set_goals.html')"><a href="#">Set Goals</a></div>
+			  <div onclick="navigateTo('wallet.html')"><a href="#">Wallet</a></div>
+			  <div onclick="navigateTo('register.html')"><a href="#">Register</a></div>
+		</nav>
+	</header>-->
+
+			  <div class="content-row-1">
+			  
+				  <div class="image">
+				<img id="img2" src="static/Community1.png">
+				<img id="img3" src="static/Community2.png">
+				</div>
+			  </div>
+			
+
+			 <table> 
+				  <thead>
+				    <tr>
+				      <th>Rank</th>
+				      <th>Name</th>
+				      <th>Streak</th>
+				      <th>Level</th>
+				      <th>$SLP</th>
+				      <th>$SOL</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>1</td>
+				      <td>John</td>
+				      <td>🔥31</td>
+				      <td>🏆20</td>
+					  <td><img id="img1" src="static/SLP.svg"> 499</td>
+				      <td><img id="img1" src="static/SOL.svg"> 243</td>
+				    </tr>
+				    <tr>
+				      <td>2</td>
+				      <td>Jane</td>
+				      <td>🔥31</td>
+				      <td>🏆20</td>
+					  <td><img id="img1" src="static/SLP.svg"> 499</td>
+				      <td><img id="img1" src="static/SOL.svg"> 160</td>
+				    </tr>
+				    <tr>
+				      <td>3</td>
+				      <td>Mike</td>
+				      <td>🔥28</td>
+				      <td>🏆24</td>
+					  <td><img id="img1" src="static/SLP.svg"> 468</td>
+				      <td><img id="img1" src="static/SOL.svg"> 80</td>
+				    </tr>
+					  <tr>
+					    <td>4</td>
+					    <td>Alice</td>
+					    <td>🔥25</td>
+					    <td>🏆18</td>
+					    <td><img id="img1" src="static/SLP.svg"> 432</td>
+					    <td><img id="img1" src="static/SOL.svg"> 95</td>
+					  </tr>
+					  <tr>
+					    <td>5</td>
+					    <td>Bob</td>
+					    <td>🔥24</td>
+					    <td>🏆19</td>
+					    <td><img id="img1" src="static/SLP.svg"> 420</td>
+					    <td><img id="img1" src="static/SOL.svg"> 72</td>
+					  </tr>
+					  <tr>
+					    <td>6</td>
+					    <td>Emily</td>
+					    <td>🔥23</td>
+					    <td>🏆17</td>
+					    <td><img id="img1" src="static/SLP.svg"> 398</td>
+					    <td><img id="img1" src="static/SOL.svg"> 105</td>
+					  </tr>
+					  <tr>
+					        <td>7</td>
+					        <td>Ava</td>
+					        <td>🔥22</td>
+					        <td>🏆16</td>
+					        <td><img id="img1" src="static/SLP.svg"> 352</td>
+					        <td><img id="img1" src="static/SOL.svg"> 60</td>
+					    </tr>
+					  <tr>
+					    <td>7</td>
+					    <td>David</td>
+					    <td>🔥21</td>
+					    <td>🏆16</td>
+					    <td><img id="img1" src="static/SLP.svg"> 375</td>
+					    <td><img id="img1" src="static/SOL.svg"> 50</td>
+					  </tr>
+					  <tr>
+					    <td>8</td>
+					    <td>Sara</td>
+					    <td>🔥20</td>
+					    <td>🏆15</td>
+					    <td><img id="img1" src="static/SLP.svg"> 352</td>
+					    <td><img id="img1" src="static/SOL.svg"> 62</td>
+					  </tr>
+					  <tr>
+					        <td>9</td>
+					        <td>Olivia</td>
+					        <td>🔥20</td>
+					        <td>🏆14</td>
+					        <td><img id="img1" src="static/SLP.svg"> 300</td>
+					        <td><img id="img1" src="static/SOL.svg"> 40</td>
+					    </tr>
+					  <tr>
+					    <td>9</td>
+					    <td>Tom</td>
+					    <td>🔥19</td>
+					    <td>🏆14</td>
+					    <td><img id="img1" src="static/SLP.svg"> 320</td>
+					    <td><img id="img1" src="static/SOL.svg"> 47</td>
+					  </tr>
+					  <tr>
+					    <td>10</td>
+					    <td>Lisa</td>
+					    <td>🔥18</td>
+					    <td>🏆13</td>
+					    <td><img id="img1" src="static/SLP.svg"> 280</td>
+					    <td><img id="img1" src="static/SOL.svg"> 29</td>
+					  </tr>
+					  <tr>
+					    <td>11</td>
+					    <td>Jack</td>
+					    <td>🔥17</td>
+					    <td>🏆12</td>
+					    <td><img id="img1" src="static/SLP.svg"> 250</td>
+					    <td><img id="img1" src="static/SOL.svg"> 68</td>
+					  </tr>
+					    
+					    <tr>
+					        <td>13</td>
+					        <td>Liam</td>
+					        <td>🔥19</td>
+					        <td>🏆13</td>
+					        <td><img id="img1" src="static/SLP.svg"> 280</td>
+					        <td><img id="img1" src="static/SOL.svg"> 30</td>
+					    </tr>
+					    
+				  </tbody>
+				</table>
+			</div>
+			</div>
+		</div>
+
+		{% endblock %}
